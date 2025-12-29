@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Vip OB51</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system;
+  background:#0b0b0b;
+  color:#fff;
+  overflow:hidden;
+}
+
+.header{
+  text-align:center;
+  padding:35px 20px 20px;
+}
+.header h1{margin:0;font-size:30px;letter-spacing:2px}
+.header span{color:#ff4d4d;font-size:13px}
+
+.card{
+  background:rgba(20,20,20,.85);
+  margin:15px;
+  border-radius:18px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 0 20px rgba(255,255,255,.05);
+}
+
+.left{display:flex;align-items:center;gap:12px}
+.icon{
+  width:36px;height:36px;border-radius:10px;
+  background:#222;display:flex;
+  align-items:center;justify-content:center;
+}
+
+.toggle{
+  width:50px;height:26px;border-radius:20px;
+  background:#444;position:relative;
+  cursor:pointer;
+}
+.toggle::after{
+  content:"";
+  width:22px;height:22px;
+  background:#fff;border-radius:50%;
+  position:absolute;top:2px;left:2px;
+  transition:.3s;
+}
+.toggle.active{background:#00ff99}
+.toggle.active::after{left:26px}
+
+.state{
+  font-size:12px;
+  margin-left:10px;
+  opacity:.8;
+}
+
+.section{
+  text-align:center;
+  margin:25px 0 10px;
+  color:#aaa;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.btn-row{
+  display:flex;
+  gap:15px;
+  padding:0 15px 30px;
+}
+.btn{
+  flex:1;
+  padding:14px;
+  border-radius:16px;
+  text-align:center;
+  font-weight:600;
+}
+.youtube{background:#ff0000}
+.zalo{background:#0ab1ff}
+
+/* Snow */
+.snow{
+  position:fixed;
+  top:-10px;
+  color:white;
+  font-size:14px;
+  animation:snowfall linear infinite;
+}
+@keyframes snowfall{
+  to{transform:translateY(110vh)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>MENU VIP OB51</h1>
+  <span>BY HẮC VÊ</span>
+</div>
+
+<div class="card">
+  <div class="left">
+    <div class="icon">📁</div> AimLock & AimBot
+  </div>
+  <div>
+    <div class="toggle" onclick="toggle(this,'reg')"></div>
+    <div class="state" id="reg">OFF</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="left">
+    <div class="icon">📲</div> SENSI & Tối Ưu Máy
+  </div>
+  <div>
+    <div class="toggle" onclick="toggle(this,'boost')"></div>
+    <div class="state" id="boost">OFF</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="left">
+    <div class="icon">⚡️</div> Nhẹ Tâm Cân Check
+  </div>
+  <div>
+    <div class="toggle" onclick="toggle(this,'aim')"></div>
+    <div class="state" id="aim">OFF</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="left">
+    <div class="icon">⚙️</div> Fix Rung
+  </div>
+  <div>
+    <div class="toggle" onclick="toggle(this,'fix')"></div>
+    <div class="state" id="fix">OFF</div>
+  </div>
+</div>
+
+<div class="section">CONTACT</div>
+
+<div class="btn-row">
+  <!-- 🔴 ĐỔI LINK YOUTUBE CỦA BẠN TẠI ĐÂY -->
+  <div class="btn youtube" onclick="window.location.href='https://youtube.com/@trumregedit25?si=fpvDkMZyMSw_KGGX'">
+    ▶ YOUTUBE
+  </div>
+
+  <!-- 🔵 ĐỔI LINK ZALO CỦA BẠN TẠI ĐÂY -->
+  <div class="btn zalo" onclick="window.location.href='https://zalo.me/84972552133'">
+    💬 ZALO
+  </div>
+</div>
+
+<script>
+function toggle(el,id){
+  el.classList.toggle("active");
+  let st=document.getElementById(id);
+  st.innerText=el.classList.contains("active")?"ON":"OFF";
+  localStorage.setItem(id,el.classList.contains("active"));
+}
+
+["reg","boost","aim","fix"].forEach(id=>{
+  if(localStorage.getItem(id)=="true"){
+    let t=document.querySelector(`[onclick*="${id}"]`);
+    t.classList.add("active");
+    document.getElementById(id).innerText="ON";
+  }
+});
+
+// Snow effect
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="snow";
+  s.innerText="❄";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=5+Math.random()*5+"s";
+  s.style.opacity=Math.random();
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
